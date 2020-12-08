@@ -1,5 +1,10 @@
-var VideoList = () => (
+var testArray = ['poop', 'turle', 'rice', 'coffee'];
+
+var VideoList = (props) => (
   <div className="video-list">
+    {props.testArray.forEach(element => {
+      <VideoListEntry title={element} />;
+    })}
     <div><h5><em>videoListEntry</em> view goes here</h5></div>
     <div><h5><em>videoListEntry</em> view goes here</h5></div>
     <div><h5><em>videoListEntry</em> view goes here</h5></div>

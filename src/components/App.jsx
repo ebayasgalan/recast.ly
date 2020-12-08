@@ -1,16 +1,17 @@
-var App = () => (
+var App = (props) => (
   <div>
     <nav className="navbar">
       <div className="col-md-6 offset-md-3">
-        <div><h5><em>search</em> view goes here</h5></div>
+        <div><h5><Search /></h5></div>
+        <h1>Hello from App.js</h1>
       </div>
     </nav>
     <div className="row">
       <div className="col-md-7">
-        <div><h5><em>videoPlayer</em> view goes here</h5></div>
+        <div><h5><VideoPlayer /></h5></div>
       </div>
       <div className="col-md-5">
-        <div><h5><em>videoList</em> view goes here</h5></div>
+        <div><h5><VideoList /></h5></div>
       </div>
     </div>
   </div>
