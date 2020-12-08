@@ -3,13 +3,22 @@ import Search from './Search.js';
 import VideoPlayer from './VideoPlayer.js';
 import exampleVideoData from '../data/exampleVideoData.js';
 
+
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       allVideos: exampleVideoData,
-      currentVideo: exampleVideoData[1]
+      currentVideo: exampleVideoData[0]
     };
+    this.clickHandler = this.clickHandler.bind(this);
+  }
+
+
+  clickHandler(index) {
+    this.setState({
+      currentVideo: exampleVideoData[index]
+    });
   }
 
   render() {
@@ -26,7 +35,7 @@ class App extends React.Component {
             <VideoPlayer video={this.state.currentVideo}/>
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.state.allVideos}/>
+            <VideoList videos={this.state.allVideos} clickHandler={this.clickHandler}/>
           </div>
         </div>
       </div>
