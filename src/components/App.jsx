@@ -1,10 +1,14 @@
-import VideoList from '../VideoList';
+import VideoList from './VideoList.js';
+import Search from './Search.js';
+import VideoPlayer from './VideoPlayer.js';
+import exampleVideoData from '../data/exampleVideoData.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      allVideos: exampleVideoData,
+      currentVideo: exampleVideoData[1]
     };
   }
 
@@ -22,7 +26,7 @@ class App extends React.Component {
             {/* <div><h5><VideoPlayer /></h5></div> */}
           </div>
           <div className="col-md-5">
-            {/* <VideoList /> */}
+            <VideoList videos={this.state.allVideos}/>
           </div>
         </div>
       </div>

@@ -1,9 +1,9 @@
-import VideoListEntry from '../VideoListEntry';
+import VideoListEntry from './VideoListEntry.js';
 
 var VideoList = (props) => (
   <div className="video-list">
-    {exampleVideoData.forEach(element => {
-      <VideoListEntry title={element.snippet.title} description={element.snippet.description} image={element.snippet.thumbnails.default.url}/>;
+    {props.videos.map(video => {
+      return <VideoListEntry video={video}/>;
     })}
   </div>
 );
