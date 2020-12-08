@@ -1,15 +1,10 @@
-var testArray = ['poop', 'turle', 'rice', 'coffee'];
+import VideoListEntry from '../VideoListEntry';
 
 var VideoList = (props) => (
   <div className="video-list">
-    {props.testArray.forEach(element => {
-      <VideoListEntry title={element} />;
+    {exampleVideoData.forEach(element => {
+      <VideoListEntry title={element.snippet.title} description={element.snippet.description} image={element.snippet.thumbnails.default.url}/>;
     })}
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
   </div>
 );
 
