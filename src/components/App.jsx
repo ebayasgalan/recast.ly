@@ -2,6 +2,7 @@ import VideoList from './VideoList.js';
 import Search from './Search.js';
 import VideoPlayer from './VideoPlayer.js';
 import exampleVideoData from '../data/exampleVideoData.js';
+import searchYouTube from '../lib/searchYouTube.js';
 
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
       currentVideo: exampleVideoData[0]
     };
     this.clickHandler = this.clickHandler.bind(this);
+    // this.clickHandler = this.clickHandler.bind(this);
   }
 
 
@@ -19,6 +21,7 @@ class App extends React.Component {
     this.setState({
       currentVideo: exampleVideoData[index]
     });
+    searchYouTube();
   }
 
   render() {
@@ -27,15 +30,15 @@ class App extends React.Component {
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
             {/* <div><h5><Search /></h5></div> */}
-            <h1>yo</h1>
+            <button onClick={this.clickHandler}>Press Here!</button>
           </div>
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <VideoPlayer video={this.state.currentVideo}/>
+            <VideoPlayer video={this.state.currentVideo} />
           </div>
           <div className="col-md-5">
-            <VideoList videos={this.state.allVideos} clickHandler={this.clickHandler}/>
+            <VideoList videos={this.state.allVideos} clickHandler={this.clickHandler} />
           </div>
         </div>
       </div>

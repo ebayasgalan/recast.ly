@@ -1,5 +1,5 @@
 var searchYouTube = (options, callback) => {
-  // TODO
+  console.log('hello from search youtube helper function!');
 };
 
 export default searchYouTube;
