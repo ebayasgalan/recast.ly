@@ -15,7 +15,7 @@ class Search extends React.Component {
     return (
       <div className="search-bar form-inline">
         <input className="form-control" type="text" value={this.state.value} onChange={this.changeHandler} />
-        <button className="btn hidden-sm-down" onClick={()=> {
+        <button className="btn hidden-sm-down" onClick={() => {
           this.props.searchHandler(this.state.value);
           this.setState({
             value: ''

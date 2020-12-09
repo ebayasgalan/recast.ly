@@ -23,10 +23,12 @@ class App extends React.Component {
       max,
       key: YOUTUBE_API_KEY
     };
+    console.log(params);
     searchYouTube(params, this.updateVideoList);
   }
 
   updateVideoList(data) {
+    console.log(data);
     this.setState({
       allVideos: data
     });
@@ -36,7 +38,6 @@ class App extends React.Component {
     this.setState({
       currentVideo: this.state.allVideos[index]
     });
-    searchYouTube();
   }
 
   render() {
@@ -56,7 +57,7 @@ class App extends React.Component {
             <VideoList videos={this.state.allVideos} clickHandler={this.clickHandler} />
           </div>
         </div>
-      </div >
+      </div>
     );
   }
 }
