@@ -14,6 +14,7 @@ class App extends React.Component {
     };
     this.clickHandler = this.clickHandler.bind(this);
     this.searchHandler = this.searchHandler.bind(this);
+    this.updateVideoList = this.updateVideoList.bind(this);
   }
 
   searchHandler(query, max = 5) {
@@ -22,29 +23,32 @@ class App extends React.Component {
       max,
       key: YOUTUBE_API_KEY
     };
-    // console.log('searchHandler clicked', searchYouTube);
-    console.log('params: ', params);
-    // searchYoutube(params, () => console.log(data))
+    searchYouTube(params, this.updateVideoList);
+  }
+
+  updateVideoList(data) {
+    this.setState({
+      allVideos: data
+    });
   }
 
   clickHandler(index) {
     this.setState({
-      currentVideo: exampleVideoData[index]
+      currentVideo: this.state.allVideos[index]
     });
   }
 
   render() {
     return (
       <div>
+        <h1>We're No Strangers to React</h1>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
             <Search searchHandler={this.searchHandler} />
-            <button onClick={searchYouTube}>Press here for searchHandler</button>
           </div>
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <h1>Some change</h1>
             <VideoPlayer video={this.state.currentVideo}/>
           </div>
           <div className="col-md-5">
