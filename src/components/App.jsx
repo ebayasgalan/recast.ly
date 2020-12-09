@@ -2,8 +2,8 @@ import VideoList from './VideoList.js';
 import Search from './Search.js';
 import VideoPlayer from './VideoPlayer.js';
 import exampleVideoData from '../data/exampleVideoData.js';
+import YOUTUBE_API_KEY from '../config/youtube.js';
 import searchYouTube from '../lib/searchYouTube.js';
-
 
 class App extends React.Component {
   constructor(props) {
@@ -13,13 +13,28 @@ class App extends React.Component {
       currentVideo: exampleVideoData[0]
     };
     this.clickHandler = this.clickHandler.bind(this);
-    // this.clickHandler = this.clickHandler.bind(this);
+    this.searchHandler = this.searchHandler.bind(this);
+    this.updateVideoList = this.updateVideoList.bind(this);
   }
 
+  searchHandler(query, max = 5) {
+    let params = {
+      query,
+      max,
+      key: YOUTUBE_API_KEY
+    };
+    searchYouTube(params, this.updateVideoList);
+  }
+
+  updateVideoList(data) {
+    this.setState({
+      allVideos: data
+    });
+  }
 
   clickHandler(index) {
     this.setState({
-      currentVideo: exampleVideoData[index]
+      currentVideo: this.state.allVideos[index]
     });
     searchYouTube();
   }
@@ -27,10 +42,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h1>We're No Strangers to React</h1>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            {/* <div><h5><Search /></h5></div> */}
-            <button onClick={this.clickHandler}>Press Here!</button>
+            <Search searchHandler={this.searchHandler} />
           </div>
         </nav>
         <div className="row">
@@ -41,7 +56,7 @@ class App extends React.Component {
             <VideoList videos={this.state.allVideos} clickHandler={this.clickHandler} />
           </div>
         </div>
-      </div>
+      </div >
     );
   }
 }
